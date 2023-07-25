@@ -3,7 +3,7 @@
     <HeaderBlock />
     <div class="card-page-main">
       <div class="card-page-main-photo"><img :src="image" alt="" /></div>
-      <p id="q">{{ title }}</p>
+      <p id="q">{{ product.title }}</p>
       <div>
         <div class="form__wrapper">
           <form action="">
@@ -20,13 +20,12 @@
 </template>
 
 <script>
+import products from "./products.js";
 import HeaderBlock from "./HeaderBlock.vue";
 export default {
   props: {
     title: {
       type: String,
-      required: true,
-      default: "Hello",
     },
     price: {
       type: Number,
@@ -38,7 +37,17 @@ export default {
   name: "CardPage",
   components: { HeaderBlock },
   data() {
-    return {};
+    return {
+      product: null,
+    };
+  },
+  created() {
+    const product = products.find(
+      (product) => product.id == this.$route.params.id
+    );
+    if (product) {
+      this.product = product;
+    }
   },
 };
 </script>
@@ -92,30 +101,24 @@ input[type="submit"]:hover {
   background: #b48caa;
 }
 ::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
   color: #b48caa;
 }
 :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
   color: #b48caa;
   opacity: 1;
 }
 ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
   color: #b48caa;
   opacity: 1;
 }
 :-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
   color: #b48caa;
 }
 ::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: #b48caa;
 }
 
 ::placeholder {
-  /* Most modern browsers support this now. */
   color: #b48caa;
 }
 </style>

@@ -8,8 +8,13 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(i, index) in products" :key="index">
-          <router-link :to="{ name: 'Page', params: { id: i.id } }">
-            <product-card :title="i.title" :price="i.price"></product-card>
+          <router-link
+            :to="{
+              name: 'Page',
+              params: { id: i.id },
+            }"
+          >
+            <product-card :title="i.title" :price="i.price"> </product-card>
           </router-link>
         </div>
       </div>
@@ -18,24 +23,29 @@
 </template>
 
 <script>
+import { getProducts } from "../api/instance";
 import ProductCard from "./ProductCard.vue";
 export default {
   name: "ListProduct",
   components: { ProductCard },
   data() {
     return {
-      products: [
-        { id: 1, title: "Info1", description: "vmfdmovm", price: 44 },
-        { id: 2, title: "Info2", description: "vmfdmovm", price: 56 },
-        { id: 3, title: "Info3", description: "vmfdmovm", price: 123 },
-        { id: 4, title: "Info4", description: "vmfdmovm", price: 123 },
-      ],
+      products: [],
     };
   },
   methods: {
     goToProductDetails(id) {
       this.$router.push({ name: "Page", params: { id: id } });
     },
+  },
+  mounted() {
+    getProducts()
+      .then((products) => {
+        this.products = products;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 };
 </script>

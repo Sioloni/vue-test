@@ -15,7 +15,7 @@
           <input type="tel" placeholder="Phone number" />
           <input type="email" placeholder="Email*" />
           <input type="text" placeholder="Describe your service" />
-          <input type="submit" value="SUMBIT" />
+          <input type="submit" value="SUBMIT" />
         </form>
         <p>
           To book a personal session or join a group<br />therapy and events,
