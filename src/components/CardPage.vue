@@ -3,7 +3,8 @@
     <HeaderBlock />
     <div class="card-page-main">
       <div class="card-page-main-photo"><img :src="image" alt="" /></div>
-      <p id="q">{{ product.title }}</p>
+      <p id="q">{{ product?.title }}</p>
+      <p id="q">{{ product?.describe }}</p>
       <div>
         <div class="form__wrapper">
           <form action="">
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import products from "./products.js";
+import { getProducts } from "../api/instance";
 import HeaderBlock from "./HeaderBlock.vue";
 export default {
   props: {
@@ -42,12 +43,19 @@ export default {
     };
   },
   created() {
-    const product = products.find(
-      (product) => product.id == this.$route.params.id
-    );
-    if (product) {
-      this.product = product;
-    }
+    getProducts()
+      .then((products) => {
+        this.products = products;
+        const product = products.find(
+          (product) => product.id == this.$route.params.id
+        );
+        if (product) {
+          this.product = product;
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 };
 </script>
