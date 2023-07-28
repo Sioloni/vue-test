@@ -7,11 +7,14 @@
       <p id="q">{{ product?.describe }}</p>
       <div>
         <div class="form__wrapper">
-          <form action="">
-            <input type="text" placeholder="Name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="email" placeholder="Email*" />
-            <input type="text" placeholder="Describe your service" />
+          <form @submit.prevent="submitForm">
+            <input type="text" v-model="name" placeholder="Name" />
+            <input
+              type="tel"
+              v-model="phoneNumber"
+              placeholder="Phone number"
+            />
+            <input type="email" v-model="email" placeholder="Email*" />
             <input type="submit" value="SUMBIT" />
           </form>
         </div>
@@ -23,6 +26,7 @@
 <script>
 import { getProducts } from "../api/instance";
 import HeaderBlock from "./HeaderBlock.vue";
+import axios from "axios";
 export default {
   props: {
     title: {
@@ -40,6 +44,10 @@ export default {
   data() {
     return {
       product: null,
+      name: "",
+      phoneNumber: "",
+      email: "",
+      serviceDescription: "",
     };
   },
   created() {
@@ -56,6 +64,25 @@ export default {
       .catch((error) => {
         console.error(error);
       });
+  },
+  methods: {
+    async submitForm() {
+      try {
+        const response = await axios.post(
+          "http://localhost:2234/api/v1/product/user",
+          {
+            name: this.name,
+            phoneNumber: this.phoneNumber,
+            email: this.email,
+            describeService: null,
+            productTitle: this.product.title,
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
 </script>
