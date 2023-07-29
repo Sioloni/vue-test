@@ -1,7 +1,8 @@
 import axios from "axios";
+import {Port} from "@/api/port";
 
 const api = axios.create({
-  baseURL: "http://localhost:2234/api/v1/",
+  baseURL: `http://localhost:${Port}/api/v1/`,
 });
 
 export function getUsers() {

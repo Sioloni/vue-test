@@ -7,23 +7,18 @@ let router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      name: "Home",
+      name: "",
       path: "/",
       component: HomePage,
     },
     {
-      name: "Home",
-      path: "/home",
-      component: HomePage,
-    },
-    {
       name: "Page",
-      path: "/home/:id",
+      path: "/product/:id",
       component: CardPage,
     },
     {
       name: "Admin",
-      path: "/home/admin",
+      path: "/admin",
       component: AdminPage,
     },
   ],
