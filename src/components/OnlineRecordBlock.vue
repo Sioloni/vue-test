@@ -1,5 +1,5 @@
 <template>
-  <section class="section-three">
+  <section id="OnlineRecord" class="section-three">
     <div class="section-three-text">
       <div class="wrapper">
         <h1>Didn't find your<br />service?</h1>
@@ -38,13 +38,17 @@ export default {
 </script>
 
 <style>
+.wrapper {
+  position: relative;
+}
 .form__wrapper {
   width: 400px;
 }
 
 form {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
+
   flex-direction: column;
   width: 400px;
   gap: 20px;
@@ -111,15 +115,15 @@ input[type="submit"]:hover {
   display: flex;
   height: fit-content;
   justify-content: space-around;
-  align-items: center;
+  align-items: baseline;
   color: #bc8aac;
   padding: 50px;
 }
 
 .images {
   position: absolute;
-  top: 300px;
-  left: 350px;
+  top: 500px;
+  left: 400px;
 }
 
 .images > img {
@@ -127,22 +131,16 @@ input[type="submit"]:hover {
 }
 
 #imgOne {
-  position: relative;
-  left: -20px;
-  bottom: -10px;
+  position: absolute;
+  left: -150px;
+  bottom: -30px;
   z-index: 1;
 }
 
 #imgTwo {
-  position: relative;
+  position: absolute;
   bottom: 30px;
-  left: -80px;
+  left: -100px;
 }
 
-.info-text {
-  height: 300px;
-  width: 400px;
-  display: flex;
-  justify-content: center;
-}
 </style>
