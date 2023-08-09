@@ -1,7 +1,7 @@
 <template>
   <footer>
     <a href="/">
-      <svg width="793" height="200" viewBox="0 0 793 368" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg width="400" height="100" viewBox="0 0 793 368" fill="none" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink">
         <rect width="793" height="368" fill="url(#pattern0)"/>
         <defs>

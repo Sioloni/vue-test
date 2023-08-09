@@ -3,12 +3,16 @@
     <HeaderBlock/>
     <div class="card-page-main">
       <div class="product-wrapper">
-        <h2>{{ product?.title }}</h2>
+        <h2 class="text-product">{{ product?.title }}</h2>
         <div class="card-page-main-photo">
-          <img :src="image" alt=""/>
+          <div v-if="this.product != null && this.product.photo != null">
+            <img :src="photoURL()" alt=""/>
+          </div>
         </div>
-        <span>Price: {{ product?.price }}$</span>
-        <p>{{ product?.describe }}</p>
+        <span class="text-product">Price: {{ product?.price }}$</span>
+        <div class="description-block">
+          <p class="text-product">{{ product?.description }}</p>
+        </div>
       </div>
 
 
@@ -25,7 +29,7 @@
         </form>
       </div>
     </div>
-  </div>
+    </div>
   <FooterBlock/>
 </template>
 
@@ -37,17 +41,6 @@ import {Port} from "@/api/port";
 import FooterBlock from "@/components/FooterBlock.vue";
 
 export default {
-  props: {
-    title: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    image: {
-      default: require("../assets/image.jpg"),
-    },
-  },
   name: "CardPage",
   components: {FooterBlock, HeaderBlock},
   data() {
@@ -57,9 +50,11 @@ export default {
       phoneNumber: "",
       email: "",
       serviceDescription: "",
+      q:" "
     };
   },
   created() {
+    console.log("1")
     getProducts()
         .then((products) => {
           this.products = products;
@@ -91,12 +86,65 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      this.name = " "
+      this.phoneNumber = " "
+      this.email = " "
+    },
+    photoURL() {
+      console.log("2")
+      const byteCharacters = atob(this.product.photo);
+      const byteArrays = [];
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteArrays.push(byteCharacters.charCodeAt(i));
+      }
+      const byteArray = new Uint8Array(byteArrays);
+      return URL.createObjectURL(new Blob([byteArray]));
+    },
+
+    base64ToBlob(base64) {
+      console.log("3")
+      const byteCharacters = atob(base64);
+      const byteArrays = [];
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteArrays.push(byteCharacters.charCodeAt(i));
+      }
+      const byteArray = new Uint8Array(byteArrays);
+      return new Blob([byteArray]);
     },
   },
 };
 </script>
 
 <style>
+@media (max-width: 767px) {
+  .card-page-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card-page-main-photo {
+    margin-bottom: 20px;
+  }
+
+  .form__wrapper {
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
 .card-page-main {
   display: flex;
   justify-content: center;
@@ -105,6 +153,7 @@ export default {
 
 .card-page-main-photo {
   flex: 1;
+  margin-left: 100px;
 }
 
 form {
@@ -114,6 +163,29 @@ form {
   width: 400px;
   gap: 20px;
   padding-bottom: 10px;
+}
+
+.product-wrapper{
+  margin-left: 100px;
+}
+
+.text-product{
+  color: #b48caa;
+}
+
+
+.description-block{
+  width: 600px;
+  height: 70px;
+ margin-top: 30px;
+}
+
+.product-wrapper h2{
+  font-size: 35px;
+}
+
+.form__wrapper{
+  margin-right: 50px;
 }
 
 input {

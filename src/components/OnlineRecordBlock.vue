@@ -10,12 +10,12 @@
         </span>
       </div>
       <div class="form__wrapper">
-        <form action="">
-          <input type="text" placeholder="Name" />
-          <input type="tel" placeholder="Phone number" />
-          <input type="email" placeholder="Email*" />
-          <input type="text" placeholder="Describe your service" />
-          <input type="submit" value="SUBMIT" />
+        <form @submit.prevent="addUser" action="">
+          <input id="name" v-model="name" placeholder="Name"/>
+          <input type="tel"  v-model="phoneNumber" placeholder="Phone number"/>
+          <input type="email" v-model="email" placeholder="Email*"/>
+          <input type="text" v-model="describeService" placeholder="Describe your service"/>
+          <input type="submit" value="SUBMIT"/>
         </form>
         <p>
           To book a personal session or join a group<br />therapy and events,
@@ -29,15 +29,48 @@
 </template>
 
 <script>
+import axios from "axios";
+import {Port} from "@/api/port";
+
 export default {
   name: "OnlineRecordBlock",
   data() {
-    return {};
+    return {
+      name:" ",
+      phoneNumber:" ",
+      email:" ",
+      describeService:" "
+    };
   },
+  methods:{
+    addUser(){
+      axios
+          .post(`http://localhost:${Port}/api/v1/product/user`, {
+            name: this.name,
+            phoneNumber: this.phoneNumber,
+            email: this.email,
+            describeService: this.describeService,
+            productTitle: null
+          })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      this.name = " "
+      this.phoneNumber = " "
+      this.email = " "
+      this.describeService = " "
+    }
+  }
 };
 </script>
 
 <style>
+
+
+
 .wrapper {
   position: relative;
 }

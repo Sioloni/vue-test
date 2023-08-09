@@ -18,7 +18,7 @@
               params: { id: i.id },
             }"
         >
-          <product-card :title="i.title" :price="i.price"></product-card>
+          <product-card :title="i.title" :price="i.price" :photo="i.photo"></product-card>
         </router-link>
       </swiper-slide>
     </swiper>
@@ -70,6 +70,11 @@ export default {
           console.error(error);
         });
   },
+  computed: {
+    decodedPhoto() {
+      return "data:image/png;base64," + atob(this.obj.photo);
+    }
+  }
 };
 </script>
 

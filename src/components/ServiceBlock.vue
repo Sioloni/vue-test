@@ -79,6 +79,7 @@ section {
   color: #bc8aac;
   display: flex;
   align-items: center;
+  margin-left: 100px;
   flex-direction: column;
   padding-bottom: 50px;
 }
