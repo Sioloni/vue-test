@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style>
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .card-page-main {
     display: flex;
     flex-direction: column;
@@ -132,10 +132,6 @@ export default {
     margin-bottom: 20px;
   }
 
-  .form__wrapper {
-    text-align: center;
-  }
-
   input[type="text"],
   input[type="tel"],
   input[type="email"],
@@ -146,9 +142,9 @@ export default {
 }
 
 .card-page-main {
+  width: 100vw;
   display: flex;
   justify-content: center;
-  padding: 3rem;
 }
 
 .card-page-main-photo {
@@ -160,14 +156,10 @@ form {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  width: 400px;
   gap: 20px;
   padding-bottom: 10px;
 }
 
-.product-wrapper{
-  margin-left: 100px;
-}
 
 .text-product{
   color: #b48caa;
@@ -175,17 +167,13 @@ form {
 
 
 .description-block{
-  width: 600px;
+  width: 100vw;
   height: 70px;
- margin-top: 30px;
+  margin-top: 30px;
 }
 
 .product-wrapper h2{
   font-size: 35px;
-}
-
-.form__wrapper{
-  margin-right: 50px;
 }
 
 input {

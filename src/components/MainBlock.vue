@@ -45,7 +45,7 @@ body {
 }
 
 .main {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,10 +96,6 @@ body {
   padding-bottom: 20px;
 }
 
-.contacts {
-  width: auto;
-}
-
 .contacts > a > img {
   width: 40px;
   padding: 10px 10px 0 0;
@@ -124,5 +120,40 @@ h3 {
 
 p {
   font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .main-text h1 {
+    font-size: 30px;
+    padding-top: 5px;
+  }
+  .main-text h3 {
+    font-size: 24px;
+    padding-top: 5px;
+  }
+  .main-text p {
+    font-size: 16px;
+    padding-top: 5px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .main-block {
+    padding: 0;
+    width: 100vw;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .main-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+  .main-block img {
+    width: 100vw;
+  }
 }
 </style>

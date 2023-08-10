@@ -22,18 +22,6 @@ export default {
 </script>
 
 <style>
-@media (max-width: 500px) {
-  .header {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-.block {
-  animation: fadeIn 1s ease-in-out;
-}
 
 body {
   font-family: Helvetica, sans-serif;
@@ -98,33 +86,14 @@ body {
   border-right: none;
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .header img {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
+@media screen and (max-width: 426px) {
   .header h1 {
-    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
   }
-
   .tabs {
-    flex-wrap: wrap;
-  }
-
-  .tab {
-    width: 50%;
-    border-right: none;
-  }
-
-  .tab:last-child {
-    border-bottom: none;
+    flex-direction: column;
   }
 }
 </style>
