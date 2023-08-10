@@ -63,6 +63,12 @@ section {
   margin-top: 50px;
   background-color: #f0e8ee;
 }
+#Service {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .section-heading-text {
   font-size: 56px;
   color: #bc8aac;
@@ -90,6 +96,15 @@ section {
 
 .section-main-text img {
   padding-right: 20px;
+}
+@media screen and (max-width: 426px) {
+  .section-main-text {
+    margin: 0;
+    grid-gap: 50px;
+  }
+  .section-main-text img {
+    display: none;
+  }
 }
 
 .caption {

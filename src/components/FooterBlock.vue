@@ -27,9 +27,14 @@ export default {
 
 <style>
 footer {
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
+}
+footer svg {
+  width: 100vw;
+
 }
 </style>

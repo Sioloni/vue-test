@@ -80,6 +80,7 @@ export default {
 
 <style>
 .section-main {
+  width: 100vw;
   background-color: white;
   padding-top: 50px;
 }
@@ -119,5 +120,10 @@ export default {
 
 .swiper-slide > a > div > img {
   width: 100%;
+}
+@media screen and (max-width: 426px) {
+  .section-two-main-text h1 {
+    font-size: 24px;
+  }
 }
 </style>
